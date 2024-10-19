@@ -8,17 +8,21 @@ export default function Home() {
   useEffect(() => {
     const links = document.querySelectorAll('a[href^="#"]')
 
-    // 화살표 함수를 사용하여 'this' 문제 해결
     links.forEach((link) => {
       link.addEventListener('click', (e) => {
         e.preventDefault()
-        const targetId = link.getAttribute('href') // this 대신 link 사용
-        const targetElement = document.querySelector(targetId)
-        if (targetElement) {
-          targetElement.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start',
-          })
+
+        const targetId = link.getAttribute('href')
+
+        // targetId가 null이 아닌지 확인
+        if (targetId) {
+          const targetElement = document.querySelector(targetId)
+          if (targetElement) {
+            targetElement.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start',
+            })
+          }
         }
       })
     })
@@ -29,6 +33,7 @@ export default function Home() {
       })
     }
   }, [])
+
   return (
     <div className={styles.container}>
       <Head>
