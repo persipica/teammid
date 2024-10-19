@@ -7,17 +7,22 @@ import styles from '../styles/Home.module.css'
 export default function Home() {
   useEffect(() => {
     const links = document.querySelectorAll('a[href^="#"]')
+
+    // 화살표 함수를 사용하여 'this' 문제 해결
     links.forEach((link) => {
-      link.addEventListener('click', function (e) {
+      link.addEventListener('click', (e) => {
         e.preventDefault()
-        const targetId = this.getAttribute('href')
+        const targetId = link.getAttribute('href') // this 대신 link 사용
         const targetElement = document.querySelector(targetId)
-        targetElement.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start',
-        })
+        if (targetElement) {
+          targetElement.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start',
+          })
+        }
       })
     })
+
     return () => {
       links.forEach((link) => {
         link.removeEventListener('click', null)
