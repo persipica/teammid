@@ -1,0 +1,239 @@
+.container {
+  min-height: 100vh;
+  padding: 0 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.main {
+  padding: 5rem 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 1000px; /* 페이지 중앙에 보이도록 최대 너비 설정 */
+  width: 100%;
+  margin: 50px;
+  padding-bottom: 50px;
+}
+
+.footer {
+  width: 100%;
+  height: 100px;
+  border-top: 1px solid #eaeaea;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 1000px; /* 푸터에도 동일한 최대 너비 설정 */
+  margin: 0 auto; /* 중앙 정렬 */
+}
+
+.title {
+  margin: 0;
+  line-height: 1.15;
+  font-size: 4rem;
+  text-align: center;
+}
+
+.title span {
+  color: #0070f3;
+}
+
+.description {
+  margin-top: 50px;
+  text-align: center;
+  font-size: 1.5rem;
+  line-height: 1.5;
+}
+
+.grid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: 800px;
+  margin-top: 100px;
+  margin-bottom: 350px;
+}
+
+.card {
+  margin: 1rem;
+  padding: 1.5rem;
+  text-align: left;
+  color: inherit;
+  text-decoration: none;
+  border: 1px solid #eaeaea;
+  border-radius: 10px;
+  transition: color 0.15s ease, border-color 0.15s ease;
+  max-width: 300px;
+  width: 300px;
+  height: 200px;
+}
+
+.card:hover {
+  color: #0070f3;
+  border-color: #0070f3;
+}
+
+.card h3 {
+  margin: 0 0 1rem 0;
+  font-size: 1.5rem;
+}
+
+.card p {
+  margin: 0;
+  font-size: 1.25rem;
+  line-height: 1.5;
+}
+.emty {
+  margin-bottom: 400px;
+}
+
+.section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1000px; /* 섹션에서도 최대 너비 설정 */
+  text-align: center;
+  margin: 2rem auto; /* 중앙 정렬 */
+  padding: 2rem;
+  position: relative;
+  border: 1px solid #c6d4c6;
+  animation: fadein 3s;
+  -webkit-animation: fadein 3s;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.section::before {
+  border-bottom: 30px solid transparent;
+  border-left: 30px solid #c6d4c6;
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+.section ::after {
+  border-left: 30px solid transparent;
+  border-bottom: 30px solid #c6d4c6;
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+}
+
+.aboutContent {
+  width: 50%;
+  height: auto;
+}
+
+.aboutText {
+  width: 50%;
+  margin-left: 20px;
+}
+
+.aboutText h2 {
+  font-weight: bold;
+  margin-bottom: 20px;
+  font-size: 22px;
+}
+
+.goalContent {
+  width: 50%;
+  height: auto;
+}
+
+.goalText h2 {
+  font-weight: bold;
+  margin-bottom: 20px;
+  font-size: 22px;
+}
+
+.goalText {
+  width: 50%;
+  margin-right: 20px;
+}
+
+.membersContent {
+  width: 50%;
+  height: auto;
+}
+
+.membersText h2 {
+  font-weight: bold;
+  margin-bottom: 20px;
+  font-size: 22px;
+}
+
+.membersText {
+  width: 50%;
+  margin-left: 20px;
+}
+
+.contactContent {
+  width: 50%;
+}
+.contactText h2 {
+  font-weight: bold;
+  margin-bottom: 20px;
+  font-size: 22px;
+}
+
+.contactText {
+  width: 50%;
+}
+
+.spanname {
+  font-weight: bold;
+}
+
+/* 사이드바 스타일 */
+.sidebar {
+  position: fixed;
+  left: 0%;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: #f7f7f7;
+  padding: 10px;
+  border-radius: 0 10px 10px 0;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar a {
+  text-decoration: none;
+  font-size: 1.2rem;
+  color: #0070f3;
+  padding: 10px;
+  transition: background-color 0.2s;
+}
+
+.sidebar a:hover {
+  background-color: #eaeaea;
+}
