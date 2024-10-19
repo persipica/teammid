@@ -8,28 +8,31 @@ export default function Home() {
   useEffect(() => {
     const links = document.querySelectorAll('a[href^="#"]')
 
-    links.forEach((link) => {
-      link.addEventListener('click', (e) => {
-        e.preventDefault()
+    // 이벤트 리스너 콜백 함수를 변수로 정의
+    const handleClick = (e: Event) => {
+      e.preventDefault()
+      const link = e.currentTarget as HTMLAnchorElement
+      const targetId = link.getAttribute('href')
 
-        const targetId = link.getAttribute('href')
-
-        // targetId가 null이 아닌지 확인
-        if (targetId) {
-          const targetElement = document.querySelector(targetId)
-          if (targetElement) {
-            targetElement.scrollIntoView({
-              behavior: 'smooth',
-              block: 'start',
-            })
-          }
+      if (targetId) {
+        const targetElement = document.querySelector(targetId)
+        if (targetElement) {
+          targetElement.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start',
+          })
         }
-      })
+      }
+    }
+
+    links.forEach((link) => {
+      link.addEventListener('click', handleClick)
     })
 
     return () => {
       links.forEach((link) => {
-        link.removeEventListener('click', null)
+        // 동일한 콜백을 사용해 이벤트 리스너 제거
+        link.removeEventListener('click', handleClick)
       })
     }
   }, [])
