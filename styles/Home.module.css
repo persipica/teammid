@@ -93,6 +93,11 @@
   margin-bottom: 400px;
 }
 
+.emty2 {
+  margin-top: 350px;
+  margin-bottom: 200px;
+}
+
 .section {
   display: flex;
   justify-content: space-between;
@@ -136,16 +141,6 @@
   left: 0px;
 }
 
-.section ::after {
-  border-left: 30px solid transparent;
-  border-bottom: 30px solid #c6d4c6;
-  content: '';
-  display: block;
-  position: absolute;
-  bottom: 0px;
-  right: 0px;
-}
-
 .aboutContent {
   width: 50%;
   height: auto;
@@ -159,7 +154,12 @@
 .aboutText h2 {
   font-weight: bold;
   margin-bottom: 20px;
-  font-size: 22px;
+  font-size: 24px;
+}
+
+.aboutText p {
+  text-align: left;
+  font-size: 18px;
 }
 
 .goalContent {
@@ -170,7 +170,19 @@
 .goalText h2 {
   font-weight: bold;
   margin-bottom: 20px;
-  font-size: 22px;
+  font-size: 24px;
+}
+
+.goalText h1 {
+  text-align: left;
+  font-weight: bold;
+  font-size: 18px;
+  margin-top: 20px;
+}
+
+.goalText p {
+  text-align: left;
+  margin-top: 10px;
 }
 
 .goalText {
@@ -186,7 +198,8 @@
 .membersText h2 {
   font-weight: bold;
   margin-bottom: 20px;
-  font-size: 22px;
+  margin-left: 30px;
+  font-size: 24px;
 }
 
 .membersText {
@@ -224,6 +237,13 @@
   padding: 10px;
   border-radius: 0 10px 10px 0;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 3;
+  filter: alpha(opacity=50);
+  opacity: 0.7;
+}
+
+.sidebar :hover {
+  opacity: 0.5;
 }
 
 .sidebar a {
@@ -236,4 +256,110 @@
 
 .sidebar a:hover {
   background-color: #eaeaea;
+}
+
+/* 애니메이션 초기 상태 */
+.hidden {
+  opacity: 0;
+  transform: translateY(100px); /* 이동 범위를 100px로 더 크게 설정 */
+  transition: opacity 1s ease-out, transform 1s ease-out; /* 지속 시간을 1초로 늘림 */
+}
+
+/* 화면에 나타난 후 */
+.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 타이틀, 디스크립션, 그리드에 대한 애니메이션 */
+.title,
+.description,
+.grid {
+  animation: fadeInUp 1s ease-out; /* 애니메이션 지속 시간을 1초로 변경 */
+}
+
+.description {
+  background-color: #0070f3;
+  border: #0070f3;
+  color: #0070f3;
+  font-size: 20px;
+}
+
+/* fadeInUp 애니메이션 */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(100px); /* 이동 범위를 더 크게 변경 */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 슬라이더 컨테이너 */
+.sliderContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden; /* 슬라이드 효과가 잘리도록 설정 */
+  width: 500px; /* 카드 컨테이너 너비 설정 */
+}
+
+/* 프로젝트 목표 카드 스타일 */
+.projectGoal {
+  width: 400px;
+  padding: 20px;
+  margin: 0 20px;
+  background-color: #f9f9f9;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.5s ease-in-out; /* 슬라이드 애니메이션 */
+  transform: translateX(0); /* 초기 상태 */
+}
+
+.projectGoal h2 {
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.projectGoal h1 {
+  font-weight: bold;
+  font-size: 22px;
+}
+
+.sliding {
+  transform: translateX(-100%); /* 왼쪽으로 슬라이드 */
+}
+
+.goalImage {
+  width: 70%;
+  height: 200px;
+  margin: auto;
+  padding-top: 10px;
+}
+
+/* 화살표 버튼 스타일 */
+.arrow {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  padding: 10px;
+  transition: color 0.3s ease;
+}
+
+.arrow:hover {
+  color: #0070f3;
+}
+
+.githubIcon {
+  display: inline;
+  width: 20px;
+  height: 20px;
+  margin-bottom: 6px;
+  margin-left: 4px;
 }
