@@ -35,7 +35,6 @@ export default function Home() {
     }
   }, [])
 
-  // 섹션이 화면에 들어올 때마다 애니메이션 재생
   useEffect(() => {
     const sections = document.querySelectorAll('section')
 
@@ -43,10 +42,8 @@ export default function Home() {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            // 화면에 보일 때 visible 클래스 추가
             entry.target.classList.add(styles.visible)
           } else {
-            // 화면에서 벗어나면 visible 클래스 제거
             entry.target.classList.remove(styles.visible)
           }
         })
@@ -76,15 +73,15 @@ export default function Home() {
             if (index < iteration) {
               return text[index]
             }
-            return String.fromCharCode(Math.floor(Math.random() * 26) + 65) // 랜덤한 문자 (대문자 A-Z)
+            return String.fromCharCode(Math.floor(Math.random() * 26) + 65)
           })
           .join('')
 
         if (iteration >= text.length) {
           clearInterval(interval)
         }
-        iteration += 1 / 3 // 텍스트가 더 천천히 변하도록 속도 조절
-      }, 100) // 50ms마다 업데이트
+        iteration += 1 / 3
+      }, 100)
     }
 
     const titleElement = document.getElementById('scramble-title')
@@ -93,11 +90,10 @@ export default function Home() {
     }
   }, [])
 
-  const [currentIndex, setCurrentIndex] = useState(0) // 현재 보여줄 프로젝트 목표 인덱스
-  const [isPaused, setIsPaused] = useState(false) // 자동 순환 멈춤 상태
-  const [isSliding, setIsSliding] = useState(false) // 애니메이션 중인지 여부
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const [isPaused, setIsPaused] = useState(false)
+  const [isSliding, setIsSliding] = useState(false)
 
-  // 프로젝트 목표 데이터
   const projectGoals = [
     {
       title: '강희수',
@@ -131,34 +127,31 @@ export default function Home() {
     },
   ]
 
-  // 다음 프로젝트 목표로 이동
   const handleNext = () => {
     if (isSliding) return
-    setIsSliding(true) // 슬라이드 애니메이션 시작
+    setIsSliding(true)
     setTimeout(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % projectGoals.length)
-      setIsSliding(false) // 애니메이션 종료
-    }, 500) // 애니메이션 지속 시간과 일치시킴 (0.5초)
+      setIsSliding(false)
+    }, 500)
   }
 
-  // 이전 프로젝트 목표로 이동
   const handlePrev = () => {
     if (isSliding) return
-    setIsSliding(true) // 슬라이드 애니메이션 시작
+    setIsSliding(true)
     setTimeout(() => {
       setCurrentIndex(
         (prevIndex) =>
           (prevIndex - 1 + projectGoals.length) % projectGoals.length
       )
-      setIsSliding(false) // 애니메이션 종료
-    }, 500) // 애니메이션 지속 시간과 일치시킴 (0.5초)
+      setIsSliding(false)
+    }, 500)
   }
 
-  // 자동 순환 로직 (마우스를 올리면 멈추고, 떼면 재개)
   useEffect(() => {
     if (!isPaused && !isSliding) {
-      const interval = setInterval(handleNext, 3000) // 3초 간격으로 자동 전환
-      return () => clearInterval(interval) // 컴포넌트 언마운트 시 인터벌 제거
+      const interval = setInterval(handleNext, 3000)
+      return () => clearInterval(interval)
     }
   }, [isPaused, currentIndex, isSliding])
 
@@ -170,7 +163,6 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      {/* 사이드바 */}
       <nav className={styles.sidebar}>
         <a href="#teamabout">만드려는 웹사이트</a>
         <a href="#project">프로젝트 목표</a>
@@ -189,7 +181,6 @@ export default function Home() {
           -----------------------------------------------------------------------------------------------------------{' '}
         </div>
 
-        {/* 섹션으로 이동하는 버튼들 */}
         <div className={styles.grid}>
           <a href="#teamabout" className={styles.card}>
             <h3>만드려는 웹사이트 &rarr;</h3>
@@ -214,7 +205,6 @@ export default function Home() {
         </div>
         <div className={styles.gridbar}></div>
 
-        {/* 섹션들 */}
         <div id="teamabout" className={styles.emty}></div>
         <section className={styles.section}>
           <div className={styles.aboutContent}>
@@ -285,8 +275,8 @@ export default function Home() {
 
         <section
           className={styles.section}
-          onMouseEnter={() => setIsPaused(true)} // 마우스를 올렸을 때 자동 순환 정지
-          onMouseLeave={() => setIsPaused(false)} // 마우스를 뗐을 때 다시 자동 순환 시작
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
         >
           <div className={styles.membersContent}>
             <img src="/member.png" alt="팀원 소개" />
@@ -295,12 +285,10 @@ export default function Home() {
             {' '}
             <h2>팀원 소개</h2>
             <div className={styles.sliderContainer}>
-              {/* 이전 버튼 */}
               <button onClick={handlePrev} className={styles.arrow}>
-                &#9664; {/* 왼쪽 화살표 */}
+                &#9664;
               </button>
 
-              {/* 슬라이드 애니메이션이 적용된 현재 보여줄 프로젝트 목표 */}
               <div
                 className={`${styles.projectGoal} ${
                   isSliding ? styles.sliding : ''
@@ -315,9 +303,8 @@ export default function Home() {
                 />
               </div>
 
-              {/* 다음 버튼 */}
               <button onClick={handleNext} className={styles.arrow}>
-                &#9654; {/* 오른쪽 화살표 */}
+                &#9654;
               </button>
             </div>
           </div>

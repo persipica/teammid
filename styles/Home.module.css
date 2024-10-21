@@ -15,7 +15,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  max-width: 1000px; /* 페이지 중앙에 보이도록 최대 너비 설정 */
+  max-width: 1000px;
   width: 100%;
   margin: 50px;
   padding-bottom: 50px;
@@ -28,8 +28,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  max-width: 1000px; /* 푸터에도 동일한 최대 너비 설정 */
-  margin: 0 auto; /* 중앙 정렬 */
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 .title {
@@ -103,9 +103,9 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  max-width: 1000px; /* 섹션에서도 최대 너비 설정 */
+  max-width: 1000px;
   text-align: center;
-  margin: 2rem auto; /* 중앙 정렬 */
+  margin: 2rem auto;
   padding: 2rem;
   position: relative;
   border: 1px solid #c6d4c6;
@@ -224,7 +224,6 @@
   font-weight: bold;
 }
 
-/* 사이드바 스타일 */
 .sidebar {
   position: fixed;
   left: 0%;
@@ -258,24 +257,21 @@
   background-color: #eaeaea;
 }
 
-/* 애니메이션 초기 상태 */
 .hidden {
   opacity: 0;
-  transform: translateY(100px); /* 이동 범위를 100px로 더 크게 설정 */
-  transition: opacity 1s ease-out, transform 1s ease-out; /* 지속 시간을 1초로 늘림 */
+  transform: translateY(100px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
 }
 
-/* 화면에 나타난 후 */
 .visible {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* 타이틀, 디스크립션, 그리드에 대한 애니메이션 */
 .title,
 .description,
 .grid {
-  animation: fadeInUp 1s ease-out; /* 애니메이션 지속 시간을 1초로 변경 */
+  animation: fadeInUp 1s ease-out;
 }
 
 .description {
@@ -285,11 +281,10 @@
   font-size: 20px;
 }
 
-/* fadeInUp 애니메이션 */
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(100px); /* 이동 범위를 더 크게 변경 */
+    transform: translateY(100px);
   }
   to {
     opacity: 1;
@@ -297,17 +292,15 @@
   }
 }
 
-/* 슬라이더 컨테이너 */
 .sliderContainer {
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
-  overflow: hidden; /* 슬라이드 효과가 잘리도록 설정 */
-  width: 500px; /* 카드 컨테이너 너비 설정 */
+  overflow: hidden;
+  width: 500px;
 }
 
-/* 프로젝트 목표 카드 스타일 */
 .projectGoal {
   width: 400px;
   padding: 20px;
@@ -317,8 +310,8 @@
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   text-align: center;
-  transition: transform 0.5s ease-in-out; /* 슬라이드 애니메이션 */
-  transform: translateX(0); /* 초기 상태 */
+  transition: transform 0.5s ease-in-out;
+  transform: translateX(0);
 }
 
 .projectGoal h2 {
@@ -332,7 +325,7 @@
 }
 
 .sliding {
-  transform: translateX(-100%); /* 왼쪽으로 슬라이드 */
+  transform: translateX(-100%);
 }
 
 .goalImage {
@@ -342,7 +335,6 @@
   padding-top: 10px;
 }
 
-/* 화살표 버튼 스타일 */
 .arrow {
   background: none;
   border: none;
